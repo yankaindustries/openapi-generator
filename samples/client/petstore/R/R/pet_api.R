@@ -34,8 +34,8 @@
 #' 
 #'
 #' \itemize{
-#' \item \emph{ @param } pet.id integer
 #' \item \emph{ @param } api.key character
+#' \item \emph{ @param } pet.id integer
 #'
 #'
 #' \item status code : 400 | Invalid pet value
@@ -160,9 +160,9 @@
 #' 
 #'
 #' \itemize{
-#' \item \emph{ @param } pet.id integer
 #' \item \emph{ @param } name character
 #' \item \emph{ @param } status character
+#' \item \emph{ @param } pet.id integer
 #'
 #'
 #' \item status code : 405 | Invalid input
@@ -178,9 +178,9 @@
 #' 
 #'
 #' \itemize{
-#' \item \emph{ @param } pet.id integer
 #' \item \emph{ @param } additional.metadata character
 #' \item \emph{ @param } file data.frame
+#' \item \emph{ @param } pet.id integer
 #' \item \emph{ @returnType } \link{ModelApiResponse} \cr
 #'
 #'
@@ -215,8 +215,8 @@
 #' ####################  DeletePet  ####################
 #'
 #' library(petstore)
-#' var.pet.id <- 56 # integer | Pet id to delete
 #' var.api.key <- 'api.key_example' # character | 
+#' var.pet.id <- 56 # integer | Pet id to delete
 #'
 #' #Deletes a pet
 #' api.instance <- PetApi$new()
@@ -286,9 +286,9 @@
 #' ####################  UpdatePetWithForm  ####################
 #'
 #' library(petstore)
-#' var.pet.id <- 56 # integer | ID of pet that needs to be updated
 #' var.name <- 'name_example' # character | Updated name of the pet
 #' var.status <- 'status_example' # character | Updated status of the pet
+#' var.pet.id <- 56 # integer | ID of pet that needs to be updated
 #'
 #' #Updates a pet in the store with form data
 #' api.instance <- PetApi$new()
@@ -302,9 +302,9 @@
 #' ####################  UploadFile  ####################
 #'
 #' library(petstore)
-#' var.pet.id <- 56 # integer | ID of pet to update
 #' var.additional.metadata <- 'additional.metadata_example' # character | Additional data to pass to server
 #' var.file <- File.new('/path/to/file') # data.frame | file to upload
+#' var.pet.id <- 56 # integer | ID of pet to update
 #'
 #' #uploads an image
 #' api.instance <- PetApi$new()
@@ -382,7 +382,7 @@ PetApi <- R6::R6Class(
       }
     },
     DeletePet = function(pet.id, api.key=NULL, ...){
-      apiResponse <- self$DeletePetWithHttpInfo(pet.id, api.key, ...)
+      apiResponse <- self$DeletePetWithHttpInfo(api.key, pet.id, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -646,7 +646,7 @@ PetApi <- R6::R6Class(
       }
     },
     UpdatePetWithForm = function(pet.id, name=NULL, status=NULL, ...){
-      apiResponse <- self$UpdatePetWithFormWithHttpInfo(pet.id, name, status, ...)
+      apiResponse <- self$UpdatePetWithFormWithHttpInfo(name, status, pet.id, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -699,7 +699,7 @@ PetApi <- R6::R6Class(
       }
     },
     UploadFile = function(pet.id, additional.metadata=NULL, file=NULL, ...){
-      apiResponse <- self$UploadFileWithHttpInfo(pet.id, additional.metadata, file, ...)
+      apiResponse <- self$UploadFileWithHttpInfo(additional.metadata, file, pet.id, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content

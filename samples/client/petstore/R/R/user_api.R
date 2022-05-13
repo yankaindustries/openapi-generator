@@ -120,9 +120,9 @@
 #' 
 #'
 #' \itemize{
+#' \item \emph{ @param } optional.parameter.test character
 #' \item \emph{ @param } username character
 #' \item \emph{ @param } password character
-#' \item \emph{ @param } optional.parameter.test character
 #'
 #'
 #' \item status code : 200 | successful operation
@@ -245,9 +245,9 @@
 #' ####################  LoginUser  ####################
 #'
 #' library(petstore)
+#' var.optional.parameter.test <- 'optional.parameter.test_example' # character | optional parameter test
 #' var.username <- 'username_example' # character | The user name for login
 #' var.password <- 'password_example' # character | The password for login in clear text
-#' var.optional.parameter.test <- 'optional.parameter.test_example' # character | optional parameter test
 #'
 #' #Logs user into the system
 #' api.instance <- UserApi$new()
@@ -540,7 +540,7 @@ UserApi <- R6::R6Class(
       }
     },
     LoginUser = function(username, password, optional.parameter.test=NULL, ...){
-      apiResponse <- self$LoginUserWithHttpInfo(username, password, optional.parameter.test, ...)
+      apiResponse <- self$LoginUserWithHttpInfo(optional.parameter.test, username, password, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content

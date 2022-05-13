@@ -65,8 +65,8 @@ Deletes a pet
 ```R
 library(petstore)
 
-var.pet.id <- 56 # integer | Pet id to delete
 var.api.key <- 'api.key_example' # character | 
+var.pet.id <- 56 # integer | Pet id to delete
 
 #Deletes a pet
 api.instance <- PetApi$new()
@@ -79,8 +79,8 @@ api.instance$DeletePet(var.pet.id, api.key=var.api.key)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pet.id** | **integer**| Pet id to delete | 
  **api.key** | **character**|  | [optional] 
+ **pet.id** | **integer**| Pet id to delete | 
 
 ### Return type
 
@@ -292,9 +292,9 @@ Updates a pet in the store with form data
 ```R
 library(petstore)
 
-var.pet.id <- 56 # integer | ID of pet that needs to be updated
 var.name <- 'name_example' # character | Updated name of the pet
 var.status <- 'status_example' # character | Updated status of the pet
+var.pet.id <- 56 # integer | ID of pet that needs to be updated
 
 #Updates a pet in the store with form data
 api.instance <- PetApi$new()
@@ -307,9 +307,9 @@ api.instance$UpdatePetWithForm(var.pet.id, name=var.name, status=var.status)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pet.id** | **integer**| ID of pet that needs to be updated | 
  **name** | **character**| Updated name of the pet | [optional] 
  **status** | **character**| Updated status of the pet | [optional] 
+ **pet.id** | **integer**| ID of pet that needs to be updated | 
 
 ### Return type
 
@@ -338,9 +338,9 @@ uploads an image
 ```R
 library(petstore)
 
-var.pet.id <- 56 # integer | ID of pet to update
 var.additional.metadata <- 'additional.metadata_example' # character | Additional data to pass to server
 var.file <- File.new('/path/to/file') # data.frame | file to upload
+var.pet.id <- 56 # integer | ID of pet to update
 
 #uploads an image
 api.instance <- PetApi$new()
@@ -354,9 +354,9 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pet.id** | **integer**| ID of pet to update | 
  **additional.metadata** | **character**| Additional data to pass to server | [optional] 
  **file** | **data.frame**| file to upload | [optional] 
+ **pet.id** | **integer**| ID of pet to update | 
 
 ### Return type
 

@@ -231,9 +231,9 @@ Logs user into the system
 ```R
 library(petstore)
 
+var.optional.parameter.test <- 'optional.parameter.test_example' # character | optional parameter test
 var.username <- 'username_example' # character | The user name for login
 var.password <- 'password_example' # character | The password for login in clear text
-var.optional.parameter.test <- 'optional.parameter.test_example' # character | optional parameter test
 
 #Logs user into the system
 api.instance <- UserApi$new()
@@ -245,9 +245,9 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **optional.parameter.test** | **character**| optional parameter test | [optional] 
  **username** | **character**| The user name for login | 
  **password** | **character**| The password for login in clear text | 
- **optional.parameter.test** | **character**| optional parameter test | [optional] 
 
 ### Return type
 
