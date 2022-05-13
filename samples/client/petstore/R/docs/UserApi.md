@@ -303,7 +303,7 @@ No authorization required
 | **0** | successful operation |  -  |
 
 # **UpdateUser**
-> UpdateUser(username, body)
+> UpdateUser(body, username)
 
 Updated user
 
@@ -313,20 +313,20 @@ This can only be done by the logged in user.
 ```R
 library(petstore)
 
-var.username <- 'username_example' # character | name that need to be deleted
 var.body <- User$new(123, "username_example", "firstName_example", "lastName_example", "email_example", "password_example", "phone_example", 123) # User | Updated user object
+var.username <- 'username_example' # character | name that need to be deleted
 
 #Updated user
 api.instance <- UserApi$new()
-api.instance$UpdateUser(var.username, var.body)
+api.instance$UpdateUser(var.body, var.username)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **character**| name that need to be deleted | 
  **body** | [**User**](User.md)| Updated user object | 
+ **username** | **character**| name that need to be deleted | 
 
 ### Return type
 

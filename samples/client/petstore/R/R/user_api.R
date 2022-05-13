@@ -161,8 +161,8 @@
 #' This can only be done by the logged in user.
 #'
 #' \itemize{
-#' \item \emph{ @param } username character
 #' \item \emph{ @param } body \link{User}
+#' \item \emph{ @param } username character
 #'
 #'
 #' \item status code : 400 | Invalid user supplied
@@ -266,13 +266,13 @@
 #' ####################  UpdateUser  ####################
 #'
 #' library(petstore)
-#' var.username <- 'username_example' # character | name that need to be deleted
 #' var.body <- User$new() # User | Updated user object
+#' var.username <- 'username_example' # character | name that need to be deleted
 #'
 #' #Updated user
 #' api.instance <- UserApi$new()
 #'
-#' result <- api.instance$UpdateUser(var.username, var.body)
+#' result <- api.instance$UpdateUser(var.body, var.username)
 #'
 #'
 #' }
@@ -633,8 +633,8 @@ UserApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
-    UpdateUser = function(username, body, ...){
-      apiResponse <- self$UpdateUserWithHttpInfo(username, body, ...)
+    UpdateUser = function(body, username, ...){
+      apiResponse <- self$UpdateUserWithHttpInfo(body, username, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -647,17 +647,17 @@ UserApi <- R6::R6Class(
       }
     },
 
-    UpdateUserWithHttpInfo = function(username, body, ...){
+    UpdateUserWithHttpInfo = function(body, username, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
 
-      if (missing(`username`)) {
-        stop("Missing required parameter `username`.")
-      }
-
       if (missing(`body`)) {
         stop("Missing required parameter `body`.")
+      }
+
+      if (missing(`username`)) {
+        stop("Missing required parameter `username`.")
       }
 
       if (!missing(`body`)) {
