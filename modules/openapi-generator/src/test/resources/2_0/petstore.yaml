@@ -439,6 +439,11 @@ paths:
         - application/xml
         - application/json
       parameters:
+        - name: optional_parameter_test
+          in: query
+          description: optional parameter test
+          required: false
+          type: string
         - name: username
           in: query
           description: The user name for login

@@ -223,7 +223,7 @@ No authorization required
 | **404** | User not found |  -  |
 
 # **LoginUser**
-> character LoginUser(username, password)
+> character LoginUser(username, password, optional.parameter.test=var.optional.parameter.test)
 
 Logs user into the system
 
@@ -233,10 +233,11 @@ library(petstore)
 
 var.username <- 'username_example' # character | The user name for login
 var.password <- 'password_example' # character | The password for login in clear text
+var.optional.parameter.test <- 'optional.parameter.test_example' # character | optional parameter test
 
 #Logs user into the system
 api.instance <- UserApi$new()
-result <- api.instance$LoginUser(var.username, var.password)
+result <- api.instance$LoginUser(var.username, var.password, optional.parameter.test=var.optional.parameter.test)
 dput(result)
 ```
 
@@ -246,6 +247,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **character**| The user name for login | 
  **password** | **character**| The password for login in clear text | 
+ **optional.parameter.test** | **character**| optional parameter test | [optional] 
 
 ### Return type
 

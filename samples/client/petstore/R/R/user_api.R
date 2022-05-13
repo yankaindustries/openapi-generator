@@ -122,6 +122,7 @@
 #' \itemize{
 #' \item \emph{ @param } username character
 #' \item \emph{ @param } password character
+#' \item \emph{ @param } optional.parameter.test character
 #'
 #'
 #' \item status code : 200 | successful operation
@@ -246,11 +247,12 @@
 #' library(petstore)
 #' var.username <- 'username_example' # character | The user name for login
 #' var.password <- 'password_example' # character | The password for login in clear text
+#' var.optional.parameter.test <- 'optional.parameter.test_example' # character | optional parameter test
 #'
 #' #Logs user into the system
 #' api.instance <- UserApi$new()
 #'
-#' result <- api.instance$LoginUser(var.username, var.password)
+#' result <- api.instance$LoginUser(var.username, var.password, optional.parameter.test=var.optional.parameter.test)
 #'
 #'
 #' ####################  LogoutUser  ####################
@@ -537,8 +539,8 @@ UserApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
-    LoginUser = function(username, password, ...){
-      apiResponse <- self$LoginUserWithHttpInfo(username, password, ...)
+    LoginUser = function(username, password, optional.parameter.test=NULL, ...){
+      apiResponse <- self$LoginUserWithHttpInfo(username, password, optional.parameter.test, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -551,7 +553,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    LoginUserWithHttpInfo = function(username, password, ...){
+    LoginUserWithHttpInfo = function(username, password, optional.parameter.test=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -563,6 +565,8 @@ UserApi <- R6::R6Class(
       if (missing(`password`)) {
         stop("Missing required parameter `password`.")
       }
+
+      queryParams['optional_parameter_test'] <- optional.parameter.test
 
       queryParams['username'] <- username
 
