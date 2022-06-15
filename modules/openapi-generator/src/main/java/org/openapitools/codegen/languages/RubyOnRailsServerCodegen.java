@@ -46,7 +46,7 @@ public class RubyOnRailsServerCodegen extends AbstractRubyCodegen {
     protected String controllersFolder = appFolder + File.separator + "controllers";
     protected String jobsFolder = appFolder + File.separator + "jobs";
     protected String mailersFolder = appFolder + File.separator + "mailers";
-    protected String modelsFolder = appFolder + File.separator + "models";
+    protected String modelsFolder = appFolder + File.separator + "serializers";
     protected String viewsFolder = appFolder + File.separator + "views";
     protected String layoutsFolder = viewsFolder + File.separator + "layouts";
     protected String binFolder = "bin";
@@ -94,8 +94,8 @@ public class RubyOnRailsServerCodegen extends AbstractRubyCodegen {
         apiPackage = "app/controllers";
         apiTemplateFiles.put("controller.mustache", ".rb");
 
-        modelPackage = "app/models";
-        modelTemplateFiles.put("model.mustache", ".rb");
+        modelPackage = "app/serializers";
+        modelTemplateFiles.put("serializer.mustache", ".rb");
 
         embeddedTemplateDir = templateDir = "ruby-on-rails-server";
 
@@ -140,67 +140,67 @@ public class RubyOnRailsServerCodegen extends AbstractRubyCodegen {
             additionalProperties.put("isDBSQLite", Boolean.TRUE);
         }
 
-        supportingFiles.add(new SupportingFile("Gemfile.mustache", "", "Gemfile"));
-        supportingFiles.add(new SupportingFile("README.md", "", "README.md"));
-        supportingFiles.add(new SupportingFile("Rakefile", "", "Rakefile"));
-        supportingFiles.add(new SupportingFile("config.ru", "", "config.ru"));
-        supportingFiles.add(new SupportingFile("channel.rb", applicationCableFolder, "channel.rb"));
-        supportingFiles.add(new SupportingFile("connection.rb", applicationCableFolder, "connection.rb"));
-        supportingFiles.add(new SupportingFile("application_controller.rb", controllersFolder, "application_controller.rb"));
-        supportingFiles.add(new SupportingFile("application_job.rb", jobsFolder, "application_job.rb"));
-        supportingFiles.add(new SupportingFile("application_mailer.rb", mailersFolder, "application_mailer.rb"));
-        supportingFiles.add(new SupportingFile("application_record.rb", modelsFolder, "application_record.rb"));
-        supportingFiles.add(new SupportingFile("mailer.html.erb", layoutsFolder, "mailer.html.erb"));
-        supportingFiles.add(new SupportingFile("mailer.text.erb", layoutsFolder, "mailer.text.erb"));
-        supportingFiles.add(new SupportingFile("bundle", binFolder, "bundle"));
-        supportingFiles.add(new SupportingFile("rails", binFolder, "rails"));
-        supportingFiles.add(new SupportingFile("rake", binFolder, "rake"));
-        supportingFiles.add(new SupportingFile("setup", binFolder, "setup"));
-        supportingFiles.add(new SupportingFile("update", binFolder, "update"));
-        supportingFiles.add(new SupportingFile("development.rb", environmentsFolder, "development.rb"));
-        supportingFiles.add(new SupportingFile("production.rb", environmentsFolder, "production.rb"));
-        supportingFiles.add(new SupportingFile("active_record_belongs_to_required_by_default.rb", initializersFolder, "active_record_belongs_to_required_by_default.rb"));
-        supportingFiles.add(new SupportingFile("application_controller_renderer.rb", initializersFolder, "application_controller_renderer.rb"));
-        supportingFiles.add(new SupportingFile("backtrace_silencers.rb", initializersFolder, "backtrace_silencers.rb"));
-        supportingFiles.add(new SupportingFile("callback_terminator.rb", initializersFolder, "callback_terminator.rb"));
-        supportingFiles.add(new SupportingFile("cors.rb", initializersFolder, "cors.rb"));
-        supportingFiles.add(new SupportingFile("filter_parameter_logging.rb", initializersFolder, "filter_parameter_logging.rb"));
-        supportingFiles.add(new SupportingFile("inflections.rb", initializersFolder, "inflections.rb"));
-        supportingFiles.add(new SupportingFile("mime_types.rb", initializersFolder, "mime_types.rb"));
-        supportingFiles.add(new SupportingFile("ssl_options.rb", initializersFolder, "ssl_options.rb"));
-        supportingFiles.add(new SupportingFile("to_time_preserves_timezone.rb", initializersFolder, "to_time_preserves_timezone.rb"));
-        supportingFiles.add(new SupportingFile("en.yml", localesFolder, "en.yml"));
-        supportingFiles.add(new SupportingFile("application.rb", configFolder, "application.rb"));
-        supportingFiles.add(new SupportingFile("boot.rb", configFolder, "boot.rb"));
-        supportingFiles.add(new SupportingFile("cable.yml", configFolder, "cable.yml"));
-        supportingFiles.add(new SupportingFile("database.mustache", configFolder, "database.yml"));
-        supportingFiles.add(new SupportingFile("environment.rb", configFolder, "environment.rb"));
-        supportingFiles.add(new SupportingFile("puma.rb", configFolder, "puma.rb"));
-        supportingFiles.add(new SupportingFile("routes.mustache", configFolder, "routes.rb"));
-        supportingFiles.add(new SupportingFile("secrets.yml", configFolder, "secrets.yml"));
-        supportingFiles.add(new SupportingFile("spring.rb", configFolder, "spring.rb"));
-        supportingFiles.add(new SupportingFile(".keep", migrateFolder, ".keep"));
-        supportingFiles.add(new SupportingFile("migrate.mustache", migrateFolder, "0_init_tables.rb"));
-        supportingFiles.add(new SupportingFile("schema.rb", dbFolder, "schema.rb"));
-        supportingFiles.add(new SupportingFile("seeds.rb", dbFolder, "seeds.rb"));
-        supportingFiles.add(new SupportingFile(".keep", tasksFolder, ".keep"));
-        supportingFiles.add(new SupportingFile(".keep", logFolder, ".keep"));
-        supportingFiles.add(new SupportingFile("404.html", publicFolder, "404.html"));
-        supportingFiles.add(new SupportingFile("422.html", publicFolder, "422.html"));
-        supportingFiles.add(new SupportingFile("500.html", publicFolder, "500.html"));
-        supportingFiles.add(new SupportingFile("apple-touch-icon-precomposed.png", publicFolder, "apple-touch-icon-precomposed.png"));
-        supportingFiles.add(new SupportingFile("apple-touch-icon.png", publicFolder, "apple-touch-icon.png"));
-        supportingFiles.add(new SupportingFile("favicon.ico", publicFolder, "favicon.ico"));
-        supportingFiles.add(new SupportingFile("robots.txt", publicFolder, "robots.txt"));
-        supportingFiles.add(new SupportingFile("robots.txt", publicFolder, "robots.txt"));
-        supportingFiles.add(new SupportingFile("test_helper.rb", testFolder, "test_helper.rb"));
-        supportingFiles.add(new SupportingFile(".keep", cacheFolder, ".keep"));
-        supportingFiles.add(new SupportingFile(".keep", pidFolder, ".keep"));
-        supportingFiles.add(new SupportingFile(".keep", socketsFolder, ".keep"));
-        supportingFiles.add(new SupportingFile("restart.txt", tmpFolder, "restart.txt"));
-        supportingFiles.add(new SupportingFile(".keep", vendorFolder, ".keep"));
-        supportingFiles.add(new SupportingFile("Dockerfile", "", "Dockerfile"));
-        supportingFiles.add(new SupportingFile("docker-entrypoint.sh", "", "docker-entrypoint.sh"));
+        // supportingFiles.add(new SupportingFile("Gemfile.mustache", "", "Gemfile"));
+        // supportingFiles.add(new SupportingFile("README.md", "", "README.md"));
+        // supportingFiles.add(new SupportingFile("Rakefile", "", "Rakefile"));
+        // supportingFiles.add(new SupportingFile("config.ru", "", "config.ru"));
+        // supportingFiles.add(new SupportingFile("channel.rb", applicationCableFolder, "channel.rb"));
+        // supportingFiles.add(new SupportingFile("connection.rb", applicationCableFolder, "connection.rb"));
+        // supportingFiles.add(new SupportingFile("application_controller.rb", controllersFolder, "application_controller.rb"));
+        // supportingFiles.add(new SupportingFile("application_job.rb", jobsFolder, "application_job.rb"));
+        // supportingFiles.add(new SupportingFile("application_mailer.rb", mailersFolder, "application_mailer.rb"));
+        // supportingFiles.add(new SupportingFile("application_record.rb", modelsFolder, "application_record.rb"));
+        // supportingFiles.add(new SupportingFile("mailer.html.erb", layoutsFolder, "mailer.html.erb"));
+        // supportingFiles.add(new SupportingFile("mailer.text.erb", layoutsFolder, "mailer.text.erb"));
+        // supportingFiles.add(new SupportingFile("bundle", binFolder, "bundle"));
+        // supportingFiles.add(new SupportingFile("rails", binFolder, "rails"));
+        // supportingFiles.add(new SupportingFile("rake", binFolder, "rake"));
+        // supportingFiles.add(new SupportingFile("setup", binFolder, "setup"));
+        // supportingFiles.add(new SupportingFile("update", binFolder, "update"));
+        // supportingFiles.add(new SupportingFile("development.rb", environmentsFolder, "development.rb"));
+        // supportingFiles.add(new SupportingFile("production.rb", environmentsFolder, "production.rb"));
+        // supportingFiles.add(new SupportingFile("active_record_belongs_to_required_by_default.rb", initializersFolder, "active_record_belongs_to_required_by_default.rb"));
+        // supportingFiles.add(new SupportingFile("application_controller_renderer.rb", initializersFolder, "application_controller_renderer.rb"));
+        // supportingFiles.add(new SupportingFile("backtrace_silencers.rb", initializersFolder, "backtrace_silencers.rb"));
+        // supportingFiles.add(new SupportingFile("callback_terminator.rb", initializersFolder, "callback_terminator.rb"));
+        // supportingFiles.add(new SupportingFile("cors.rb", initializersFolder, "cors.rb"));
+        // supportingFiles.add(new SupportingFile("filter_parameter_logging.rb", initializersFolder, "filter_parameter_logging.rb"));
+        // supportingFiles.add(new SupportingFile("inflections.rb", initializersFolder, "inflections.rb"));
+        // supportingFiles.add(new SupportingFile("mime_types.rb", initializersFolder, "mime_types.rb"));
+        // supportingFiles.add(new SupportingFile("ssl_options.rb", initializersFolder, "ssl_options.rb"));
+        // supportingFiles.add(new SupportingFile("to_time_preserves_timezone.rb", initializersFolder, "to_time_preserves_timezone.rb"));
+        // supportingFiles.add(new SupportingFile("en.yml", localesFolder, "en.yml"));
+        // supportingFiles.add(new SupportingFile("application.rb", configFolder, "application.rb"));
+        // supportingFiles.add(new SupportingFile("boot.rb", configFolder, "boot.rb"));
+        // supportingFiles.add(new SupportingFile("cable.yml", configFolder, "cable.yml"));
+        // supportingFiles.add(new SupportingFile("database.mustache", configFolder, "database.yml"));
+        // supportingFiles.add(new SupportingFile("environment.rb", configFolder, "environment.rb"));
+        // supportingFiles.add(new SupportingFile("puma.rb", configFolder, "puma.rb"));
+        // supportingFiles.add(new SupportingFile("routes.mustache", configFolder, "routes.rb"));
+        // supportingFiles.add(new SupportingFile("secrets.yml", configFolder, "secrets.yml"));
+        // supportingFiles.add(new SupportingFile("spring.rb", configFolder, "spring.rb"));
+        // supportingFiles.add(new SupportingFile(".keep", migrateFolder, ".keep"));
+        // supportingFiles.add(new SupportingFile("migrate.mustache", migrateFolder, "0_init_tables.rb"));
+        // supportingFiles.add(new SupportingFile("schema.rb", dbFolder, "schema.rb"));
+        // supportingFiles.add(new SupportingFile("seeds.rb", dbFolder, "seeds.rb"));
+        // supportingFiles.add(new SupportingFile(".keep", tasksFolder, ".keep"));
+        // supportingFiles.add(new SupportingFile(".keep", logFolder, ".keep"));
+        // supportingFiles.add(new SupportingFile("404.html", publicFolder, "404.html"));
+        // supportingFiles.add(new SupportingFile("422.html", publicFolder, "422.html"));
+        // supportingFiles.add(new SupportingFile("500.html", publicFolder, "500.html"));
+        // supportingFiles.add(new SupportingFile("apple-touch-icon-precomposed.png", publicFolder, "apple-touch-icon-precomposed.png"));
+        // supportingFiles.add(new SupportingFile("apple-touch-icon.png", publicFolder, "apple-touch-icon.png"));
+        // supportingFiles.add(new SupportingFile("favicon.ico", publicFolder, "favicon.ico"));
+        // supportingFiles.add(new SupportingFile("robots.txt", publicFolder, "robots.txt"));
+        // supportingFiles.add(new SupportingFile("robots.txt", publicFolder, "robots.txt"));
+        // supportingFiles.add(new SupportingFile("test_helper.rb", testFolder, "test_helper.rb"));
+        // supportingFiles.add(new SupportingFile(".keep", cacheFolder, ".keep"));
+        // supportingFiles.add(new SupportingFile(".keep", pidFolder, ".keep"));
+        // supportingFiles.add(new SupportingFile(".keep", socketsFolder, ".keep"));
+        // supportingFiles.add(new SupportingFile("restart.txt", tmpFolder, "restart.txt"));
+        // supportingFiles.add(new SupportingFile(".keep", vendorFolder, ".keep"));
+        // supportingFiles.add(new SupportingFile("Dockerfile", "", "Dockerfile"));
+        // supportingFiles.add(new SupportingFile("docker-entrypoint.sh", "", "docker-entrypoint.sh"));
     }
 
     @Override
@@ -237,7 +237,7 @@ public class RubyOnRailsServerCodegen extends AbstractRubyCodegen {
     public String toModelName(String name) {
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
-            String modelName = camelize("Model" + name);
+            String modelName = camelize("Serializer" + name);
             LOGGER.warn("{} (reserved word) cannot be used as model name. Renamed to {}", name, modelName);
             return modelName;
         }
@@ -251,7 +251,7 @@ public class RubyOnRailsServerCodegen extends AbstractRubyCodegen {
     public String toModelFilename(String name) {
         // model name cannot use reserved keyword, e.g. return
         if (isReservedWord(name)) {
-            String filename = underscore("model_" + name);
+            String filename = underscore("serializer_" + name);
             LOGGER.warn("{} (reserved word) cannot be used as model filename. Renamed to {}", name, filename);
             return filename;
         }

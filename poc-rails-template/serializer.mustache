@@ -1,0 +1,12 @@
+=begin
+{{> info}}
+=end
+{{#models}}{{#model}}
+class {{classname}}Serializer
+  include FastJsonapi::ObjectSerializer
+
+{{#vars}}
+  attributes :{{{name}}}
+{{/vars}}
+end
+{{/model}}{{/models}}

@@ -1,0 +1,2 @@
+app/controllers/default_controller.rb
+app/serializers/camp_featured_project.rb
