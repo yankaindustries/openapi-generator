@@ -91,8 +91,8 @@ public class RubyOnRailsServerCodegen extends AbstractRubyCodegen {
         );
 
         outputFolder = "generated-code" + File.separator + "rails5";
-        apiPackage = "app/controllers";
-        apiTemplateFiles.put("controller.mustache", ".rb");
+        // apiPackage = "app/controllers";
+        // apiTemplateFiles.put("controller.mustache", ".rb");
 
         modelPackage = "app/serializers";
         modelTemplateFiles.put("serializer.mustache", ".rb");
