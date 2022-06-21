@@ -1,1 +1,1 @@
-app/serializers/camp_featured_project.rb
+app/serializers/camp_featured_project_serializer.rb

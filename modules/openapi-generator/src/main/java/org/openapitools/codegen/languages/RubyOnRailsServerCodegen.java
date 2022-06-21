@@ -258,7 +258,7 @@ public class RubyOnRailsServerCodegen extends AbstractRubyCodegen {
 
         // underscore the model file name
         // PhoneNumber.rb => phone_number.rb
-        return underscore(name);
+        return underscore(name)+ "_serializer";
     }
 
     @Override
